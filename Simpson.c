@@ -1,3 +1,7 @@
+/*
+Approximate area = (h/3)*[f(x0) + 4*f(x1) + 2*f(x2) + ... + 2*f(x(n-2)) + 4*f(x(n-1)) + f(xn)]
+*/
+
 #include<stdio.h>
 #include<math.h>
 
