@@ -15,11 +15,12 @@ void gaussSeidel(double **A, double *b, double *x, int n, int imax, float es, fl
 	while(1){
 		printf("Iteration:%d \n", k);
 		converge = 1;
-
+		
+		//for each variable
 		for (int i = 0; i < n; ++i)
 		{
+			//calculate value of i'th variable using i'th equation
 			double old = x[i];
-			//sum
 			double summation = b[i];
 			for (int j = 0; j < n; ++j)
 			{
@@ -30,12 +31,15 @@ void gaussSeidel(double **A, double *b, double *x, int n, int imax, float es, fl
 			}
 
 			//store in new value of variables
-			x[i] = summation/A[i][i];
+			x[i] = summation/A[i][i];		//here found the value of i'th variable
 			x[i] = lambda*x[i] + (1 - lambda)*old;   //weighted average of old and new value of x[i]
 			printf("old = %f x[%d] = %f \t", old, i, x[i]);
 			double diff = old - x[i];
+			
+			//absolute value of difference of old and new value of variable			
 			if(diff < 0)
 				diff = -1*diff;
+
 			printf("diff = %f\t",diff);
 			if(converge == 1 && x[i] != 0){
 				float ea = (diff*100.0)/x[i];
